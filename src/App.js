@@ -1,24 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { AuthContext } from "./shared/context/auth-context";
+import { Routes, Route } from "react-router-dom";
+
+// IMPORT COMPONENTS
+import { Login } from "./components/Login";
+import { Main } from "./components/Main";
 
 function App() {
+  // STATE VARIABLES
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState(null);
+
+  // FUNCTIONS
+
+  const login = (_name) => {
+    setName(_name);
+    setIsLoggedIn(true);
+  };
+  const logout = () => {
+    setName(null);
+    setIsLoggedIn(false);
+  };
+
+  // ROUTE SETUP FOR LOGIN AND LOGOUT
+
+  let route;
+  if (!isLoggedIn) {
+    route = (
+      <>
+        <Route path="/" element={<Login />} exact></Route>
+      </>
+    );
+  } else {
+    route = (
+      <>
+        <Route path="/" element={<Login />} exact></Route>
+        <Route path="/main" element={<Main />} exact></Route>
+      </>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+        userName: name,
+        logIn: login,
+        logOut: logout,
+      }}
+    >
+      <Routes>{route}</Routes>
+    </AuthContext.Provider>
   );
 }
 

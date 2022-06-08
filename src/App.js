@@ -6,10 +6,12 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login";
 import { Main } from "./components/Main";
 
+import "./App.css";
+
 function App() {
   // STATE VARIABLES
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [name, setName] = useState(null);
 
   // FUNCTIONS
@@ -29,7 +31,7 @@ function App() {
   if (!isLoggedIn) {
     route = (
       <>
-        <Route path="/" element={<Login />} exact></Route>
+        <Route path="/*" element={<Login />}></Route>
       </>
     );
   } else {
@@ -37,6 +39,7 @@ function App() {
       <>
         <Route path="/" element={<Login />} exact></Route>
         <Route path="/main" element={<Main />} exact></Route>
+        <Route path="/*" element={<Login />}></Route>
       </>
     );
   }

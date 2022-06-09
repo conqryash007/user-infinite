@@ -38,7 +38,7 @@ function App() {
     route = (
       <>
         <Route path="/" element={<Login />} exact></Route>
-        <Route path="/main" element={<Main />} exact></Route>
+        <Route path="/home" element={<Main />} exact></Route>
         <Route path="/*" element={<Login />}></Route>
       </>
     );

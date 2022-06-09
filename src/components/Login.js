@@ -32,7 +32,7 @@ export default function Login() {
 
     if (formData.uname === "foo" && formData.password === "bar") {
       auth.logIn(formData.uname);
-      navigate("/main");
+      navigate("/home");
     } else {
       alert("WRONG USERNAME OR PASSWORD !!!");
     }

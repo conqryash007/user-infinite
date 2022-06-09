@@ -12,7 +12,7 @@ export default function NavLinks() {
         <Button color="inherit">LOGIN PAGE</Button>
       </NavLink>
       {auth.isLoggedIn && (
-        <NavLink to={`/main`}>
+        <NavLink to={`/home`}>
           <Button color="inherit">USERS PAGE</Button>
         </NavLink>
       )}

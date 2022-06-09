@@ -55,7 +55,7 @@ export default function TemporaryDrawer(props) {
               <ListItemIcon>
                 <SupervisedUserCircleIcon />
               </ListItemIcon>
-              <NavLink to={`/main`}>
+              <NavLink to={`/home`}>
                 <ListItemText color="inherit">USERS PAGE</ListItemText>
               </NavLink>
             </ListItemButton>

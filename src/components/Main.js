@@ -6,6 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import Skeleton from "@mui/material/Skeleton";
 
 import Card from "./Card";
+import Navbar from "./Navbar/NavBar";
 
 export const Main = () => {
   // STATE VARIABLE
@@ -62,41 +63,48 @@ export const Main = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <InfinitScroll
-        dataLength={userData.length}
-        next={fetchNextUsers}
-        hasMore={true}
-        loader={
-          <>
-            {new Array(4).fill(1).map((curr, index) => {
-              return (
-                <div key={index} className="skl-main">
-                  <Skeleton variant="rectangular" width="100%">
-                    <div className="skl-div" />
-                  </Skeleton>
-                  <Skeleton variant="circular">
-                    <Avatar
-                      sx={{
-                        width: "5vw",
-                        height: "5vw",
-                      }}
-                    />
-                  </Skeleton>
-                </div>
-              );
-            })}
-          </>
-        }
-      >
-        {!userData[0]?.name?.first
-          ? null
-          : userData.map((curr, idx) => {
-              return (
-                <Card key={idx} name={curr.name} picture={curr.picture}></Card>
-              );
-            })}
-      </InfinitScroll>
-    </div>
+    <>
+      <Navbar />
+      <div className="mainContainer">
+        <InfinitScroll
+          dataLength={userData.length}
+          next={fetchNextUsers}
+          hasMore={true}
+          loader={
+            <>
+              {new Array(4).fill(1).map((curr, index) => {
+                return (
+                  <div key={index} className="skl-main">
+                    <Skeleton variant="rectangular" width="100%">
+                      <div className="skl-div" />
+                    </Skeleton>
+                    <Skeleton variant="circular">
+                      <Avatar
+                        sx={{
+                          width: "5vw",
+                          height: "5vw",
+                        }}
+                      />
+                    </Skeleton>
+                  </div>
+                );
+              })}
+            </>
+          }
+        >
+          {!userData[0]?.name?.first
+            ? null
+            : userData.map((curr, idx) => {
+                return (
+                  <Card
+                    key={idx}
+                    name={curr.name}
+                    picture={curr.picture}
+                  ></Card>
+                );
+              })}
+        </InfinitScroll>
+      </div>
+    </>
   );
 };

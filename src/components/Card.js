@@ -5,20 +5,7 @@ import Avatar from "@mui/material/Avatar";
 const Card = ({ name, picture }) => {
   return (
     <div>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-          backgroundColor: "black",
-          opacity: "0.9",
-          marginBottom: "1vh",
-          padding: "20px",
-          borderRadius: "10px",
-          fontSize: "1.1vw",
-        }}
-      >
+      <Box className="card-box">
         <Box sx={{ width: "70%" }}>
           <h1>{`${name.title}. ${name.first} ${name.last}`}</h1>
         </Box>

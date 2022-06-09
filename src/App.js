@@ -3,7 +3,7 @@ import { AuthContext } from "./shared/context/auth-context";
 import { Routes, Route } from "react-router-dom";
 
 // IMPORT COMPONENTS
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 import { Main } from "./components/Main";
 
 import "./App.css";
@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   // STATE VARIABLES
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState(null);
 
   // FUNCTIONS
